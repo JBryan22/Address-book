@@ -32,10 +32,14 @@ function displayContactInfo(contactObj){
 
 function resetFields() {
   $("input.address").val('');
+  $(".new-address").remove();
 }
 
 function appendAddressDiv(place) {
-  $(place).append('<div class="new-address">' +
+
+  $(place).append(
+                            '<div class="new-address well">' +
+                            '<h3>Address ' + ($('.new-address').length + 2)  +  '</h3>' +
                                '<div class="form-group">' +
                                  '<label for="new-street">Street</label>' +
                                  '<input type="text" class="form-control new-street address">' +
@@ -64,7 +68,6 @@ $(document).ready(function() {
     var newContact = new Contact(inputtedFirstName, inputtedLastName);
     $(".new-address").each(function() {
       var inputtedStreet = $(this).find("input.new-street").val();
-      console.log(inputtedStreet);
       var inputtedCity = $(this).find("input.new-city").val();
       var inputtedState = $(this).find("input.new-state").val();
       var newAddress = new Address(inputtedStreet, inputtedCity, inputtedState);
