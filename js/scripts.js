@@ -38,28 +38,40 @@ function resetFields() {
 function appendAddressDiv(place) {
 
   $(place).append(
-                            '<div class="new-address well">' +
-                            '<h3>Address ' + ($('.new-address').length + 2)  +  '</h3>' +
-                               '<div class="form-group">' +
-                                 '<label for="new-street">Street</label>' +
-                                 '<input type="text" class="form-control new-street address">' +
-                               '</div>' +
-                               '<div class="form-group">' +
-                                 '<label for="new-city">City</label>' +
-                                 '<input type="text" class="form-control new-city address">' +
-                               '</div>' +
-                               '<div class="form-group">' +
-                                 '<label for="new-state">State</label>' +
-                                 '<input type="text" class="form-control new-state address">' +
-                               '</div>' +
-                             '</div>');
+        '<div class="new-address well">' +
+        '<h3>Address ' + ($('.new-address').length + 2)  +  '</h3>' +
+           '<div class="form-group">' +
+             '<label for="new-street">Street</label>' +
+             '<input type="text" class="form-control new-street address">' +
+           '</div>' +
+           '<div class="form-group">' +
+             '<label for="new-city">City</label>' +
+             '<input type="text" class="form-control new-city address">' +
+           '</div>' +
+           '<div class="form-group">' +
+             '<label for="new-state">State</label>' +
+             '<input type="text" class="form-control new-state address">' +
+           '</div>' +
+           '<p class="removal">Delete</p>' +
+          '</div>');
+          //return this;
 }
 
 $(document).ready(function() {
 
   $("#add-address").click(function() {
+    $("#delete").show();//added
     appendAddressDiv("#new-addresses");
+    $(".removal").click(function(){
+      removal.remove();
+    });
   });
+
+$("#delete").click(function(){ // added
+$(".form-group").remove();
+  this.remove();
+
+});
 
   $("form#new-contact").submit(function(event) {
     event.preventDefault();
